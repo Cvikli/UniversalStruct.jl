@@ -22,7 +22,6 @@ load(t::Type{T}, args...; kw_args...)         where T <: Universal      = load(i
 load(obj::T)                                  where T <: Universal      = begin
 	c = load_disk(obj)
 	c, needsave = !isa(c, Nothing) ? extend!(obj,c) : (load_data!(obj), true)
-	@show needsave
 	needsave && save_disk(c, !isa(c, Nothing))
 	cut_requested!(obj, c)
 end
