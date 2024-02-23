@@ -1,0 +1,7 @@
+name = "UniversalStruct"
+uuid = "c23d0e24-ccd8-4f5c-94ed-3654aae86e4b"
+authors = ["Marcell <havlikmarcell@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+PersistableStruct = "8ae4430d-dc1b-4714-beb8-6d50226d6b35"
