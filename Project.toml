@@ -6,5 +6,4 @@ version = "0.1.0"
 [deps]
 ExtendableStruct = "b05f1c06-078b-4ac2-9643-307ac292d0cf"
 InitLoadableStruct = "c2283afa-f45b-4432-83db-f4cc05c12624"
-MemoizeTyped = "a636933a-ab55-46ec-b805-b789c6b8b1f1"
 PersistableStruct = "8ae4430d-dc1b-4714-beb8-6d50226d6b35"
