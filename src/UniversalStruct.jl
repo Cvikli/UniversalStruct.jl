@@ -22,8 +22,9 @@ load(t::Type{T}, args...; kw_args...)         where T <: InitableLoadable = load
 load(t::Type{T}, args...; kw_args...)         where T <: Persistable      = load(init(t, args...; kw_args...))
 load(obj::T)                                  where T <: Persistable      = begin
 	c = load_disk(obj)
-
+@show "WHATT??"
 	c, needsave = !isa(c, Nothing) ? extend!(obj,c) : (load_data!(obj), true)
+	@show needsave
 	needsave && save_disk(c, !isa(c, Nothing))
 	cut_requested!(obj, c)
 end

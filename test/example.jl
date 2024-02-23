@@ -44,11 +44,11 @@ UniversalStruct.init_after_data(obj::BasicExample,  c::BasicExample) = init(T, c
 
 
 
-cached_load(BasicExample, "test",30,43,Float32[])
-cached_load(BasicExample, "test",30,48,Float32[])
-cached_load(BasicExample, "test",21,48,Float32[])
-cached_load(BasicExample, "test",2,48, Float32[])
-cached_load(BasicExample, "test",5,45, Float32[])
-cached_load(BasicExample, "test",9,13, Float32[])
-cached_load(BasicExample, "test",9,12, Float32[])
+cached_load(BasicExample, "test",30,43)
+cached_load(BasicExample, "test",30,48)
+cached_load(BasicExample, "test",21,48)
+cached_load(BasicExample, "test",2, 48)
+cached_load(BasicExample, "test",5, 45)
+cached_load(BasicExample, "test",9, 13)
+cached_load(BasicExample, "test",9, 12)
 
