@@ -15,11 +15,12 @@ mutable struct BasicExample <: Universal
 	data::Vector{Float32}
 end
 
-BasicExample(conf,fr,to) = BasicExample(conf,fr,to, Float32[])  # This is for init(...) function basically. We need constructor without data!
+# This is for init(...) function basically. We need constructor without data!
+BasicExample(conf,fr,to) = BasicExample(conf,fr,to, Float32[])  
 UniversalStruct.load_data!(obj::BasicExample) = (obj.data = randn(Float32,obj.to-obj.fr); return obj)
 
 # The directory you want the object to persist.
-# The default is okay for the folder function ----> folder(obj::T)              where T = mkfolder_if_not_exist("./data")
+# The default is okay for the folder function ----> folder(obj)     = (mkfolder_if_not_exist((foldname="./data/";)); return foldname)
 # The glob pattern that finds the files (You can use asterix to match custom fields)
 UniversalStruct.glob_pattern(obj::BasicExample)              = "BasicExample_$(obj.config)_*_*.jld2" # throw("Unimplemented... So basically to get the files list it is advised for you to build this.") #"$(T)_$(obj.config)_*_*"*".jld2"
 # The unqiue filename for your 
@@ -45,6 +46,8 @@ UniversalStruct.need_data_after(obj::BasicExample,  c::BasicExample) = c.to < ob
 UniversalStruct.init_before_data(obj::BasicExample, c::BasicExample) = UniversalStruct.init(BasicExample, obj.config, obj.fr, c.fr)
 UniversalStruct.init_after_data(obj::BasicExample,  c::BasicExample) = UniversalStruct.init(BasicExample, obj.config, c.to, obj.to)
 
+
+UniversalStruct.cut_requested!(obj::BasicExample, big_obj::BasicExample) = (obj.data = big_obj.data[1+obj.fr-big_obj.fr:end-(big_obj.to-obj.to)]; return obj)
 
 
 load(BasicExample, "test",30,43)

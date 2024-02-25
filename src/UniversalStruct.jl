@@ -13,7 +13,7 @@ using PersistableStruct: folder, glob_pattern, unique_filename, parse_filename, 
 
 export cached_load, load, Universal
 
-abstract type Universal <: InitableLoadable end
+abstract type Universal <: Persistable end
 
 # cached_load(obj)  where T <: InitableLoadable = @memoize_typed T load(obj) unique_args(obj)
 # cached_load(t::Type{T}, args...; kw_args...)  where T <: InitableLoadable = @memoize_typed T load(t, args...; kw_args...)

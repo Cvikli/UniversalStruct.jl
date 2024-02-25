@@ -52,6 +52,8 @@ UniversalStruct.need_data_after(obj::BasicExample,  c::BasicExample) = c.to < ob
 UniversalStruct.init_before_data(obj::BasicExample, c::BasicExample) = UniversalStruct.init(BasicExample, obj.config, obj.fr, c.fr)
 UniversalStruct.init_after_data(obj::BasicExample,  c::BasicExample) = UniversalStruct.init(BasicExample, obj.config, c.to, obj.to)
 
+UniversalStruct.cut_requested!(obj::BasicExample, big_obj::BasicExample) = (obj.data = big_obj.data[1+obj.fr-big_obj.fr:end-(big_obj.to-obj.to)]; return obj)
+
 
 
 load(BasicExample, "test",30,43)
