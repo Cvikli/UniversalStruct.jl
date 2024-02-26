@@ -1,5 +1,6 @@
 module UniversalStruct
 
+using Unimplemented
 
 using InitLoadableStruct: InitableLoadable
 using ExtendableStruct: Extendable, extend!
@@ -10,6 +11,7 @@ using PersistableStruct: Persistable, load_disk, save_disk
 using InitLoadableStruct: init, load_data!
 using ExtendableStruct: append, need_data_before, need_data_after, init_before_data, init_after_data
 using PersistableStruct: folder, glob_pattern, unique_filename, parse_filename, parse_args, score
+
 
 export cached_load, load, Universal
 
@@ -27,7 +29,7 @@ load(obj::T)                                  where T <: Universal      = begin
 end
 
 # cut_requested!(obj::T) where T <: Extendable = return obj
-cut_requested!(obj, big_obj)                 = (obj.data = big_obj.data[1+obj.fr-big_obj.fr:end-(big_obj.to-obj.to)]; return obj)
+@interface cut_requested!(obj, big_obj)              #   = (obj.data = big_obj.data[1+obj.fr-big_obj.fr:end-(big_obj.to-obj.to)]; return obj)
 
 
 
